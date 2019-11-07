@@ -21,8 +21,11 @@ class HomeTableTableViewController: UITableViewController {
         
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
-
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadTweets()
     }
     
     @objc func loadTweets(){
@@ -98,7 +101,9 @@ class HomeTableTableViewController: UITableViewController {
         if let imageData = data{
             cell.profileImageView.image = UIImage(data: imageData)
             cell.profileImageView.contentMode = .scaleAspectFill
-            cell.profileImageView.layer.masksToBounds = true
+            cell.profileImageView.layer.masksToBounds = false
+            cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.width / 2
+            cell.profileImageView.clipsToBounds = true
         }
         return cell
     }
