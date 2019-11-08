@@ -186,12 +186,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/140" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHQ-DW-Yfa" userLabel="countLabel">
+                                <rect key="frame" x="305" y="174" width="70" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="YNo-Dp-8XG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9Wb-8Z-iUW" firstAttribute="trailing" secondItem="Bws-Lo-6sw" secondAttribute="trailing" id="8g1-6b-CVi"/>
+                            <constraint firstItem="9Wb-8Z-iUW" firstAttribute="trailing" secondItem="SHQ-DW-Yfa" secondAttribute="trailing" id="W6l-Rg-t6a"/>
                             <constraint firstItem="Bws-Lo-6sw" firstAttribute="leading" secondItem="9Wb-8Z-iUW" secondAttribute="leading" id="WHR-aw-AcP"/>
                             <constraint firstItem="Bws-Lo-6sw" firstAttribute="top" secondItem="9Wb-8Z-iUW" secondAttribute="top" id="dkL-JE-kbY"/>
+                            <constraint firstItem="SHQ-DW-Yfa" firstAttribute="top" secondItem="Bws-Lo-6sw" secondAttribute="bottom" constant="2" id="kXn-1x-L6q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Wb-8Z-iUW"/>
                     </view>
@@ -210,12 +221,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="countLabel" destination="SHQ-DW-Yfa" id="SGD-a4-fmO"/>
                         <outlet property="tweetTextView" destination="Bws-Lo-6sw" id="cBT-YT-GlW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHB-Bn-86b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3234" y="26"/>
+            <point key="canvasLocation" x="3232.8000000000002" y="25.637181409295355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jqO-XW-lff">

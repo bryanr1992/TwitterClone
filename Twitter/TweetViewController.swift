@@ -8,13 +8,15 @@
 
 import UIKit
 
-class TweetViewController: UIViewController {
+class TweetViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetTextView: UITextView!
+    @IBOutlet weak var countLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tweetTextView.becomeFirstResponder()
+        tweetTextView.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -33,6 +35,21 @@ class TweetViewController: UIViewController {
             })
         }else{
             self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        if(tweetTextView.text.count > 0 && tweetTextView.text.count <= 140){
+            countLabel.text = "\(tweetTextView.text.count)/140"
+        }
+        else if tweetTextView.text.count > 140{
+            
+            let startPos = tweetTextView.position(from: tweetTextView.beginningOfDocument, offset: 0)
+            let endPos = tweetTextView.position(from: tweetTextView.endOfDocument, offset: -1)
+            let thisRange = tweetTextView.textRange(from: startPos!, to: endPos!)
+            tweetTextView.text = tweetTextView.text(in: thisRange!)!
+            
         }
     }
     /*
