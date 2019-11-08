@@ -11,6 +11,7 @@ import UIKit
 class TweetCell: UITableViewCell {
     
     var liked: Bool = false
+    var retweeted: Bool = false
     var tweetId: Int!
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -41,13 +42,23 @@ class TweetCell: UITableViewCell {
             likeButton.setImage(UIImage(named: "favor-icon"), for: UIControl.State.normal)
         }
     }
+    
+    func setRetweeted(_ isRetweeted: Bool) {
+        retweeted = isRetweeted
+        if(retweeted){
+            retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControl.State.normal)
+        }
+        else{
+            retweetButton.setImage(UIImage(named: "retweet-icon"), for: UIControl.State.normal)
+        }
+    }
 
     @IBAction func likeTweet(_ sender: Any) {
         let toBeLiked = !liked
         
         if(toBeLiked){
             TwitterAPICaller.client?.favoriteTweet(tweetID: tweetId, success: {
-                self.likeButton.setImage(UIImage(named: "favor-icon-red"), for: UIControl.State.normal)
+                self.setLikedTweet(true)
             }, failure: { (error) in
                 print("Unable to favorite tweet: \(error)")
             })
@@ -56,7 +67,7 @@ class TweetCell: UITableViewCell {
         }
         else{
             TwitterAPICaller.client?.unfavoriteTweet(tweetID: tweetId, success: {
-                self.likeButton.setImage(UIImage(named: "favor-icon"), for: UIControl.State.normal)
+                self.setLikedTweet(false)
             }, failure: { (error) in
                 print("Unable to unfavorite tweet: \(error)")
             })
