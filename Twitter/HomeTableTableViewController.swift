@@ -108,6 +108,8 @@ class HomeTableTableViewController: UITableViewController {
         }
         cell.timeLabel.text = getRelativeTime(timeString: tweetArray[indexPath.row]["created_at"] as! String)
         cell.setLikedTweet(tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as? Int
+        
         return cell
     }
     
