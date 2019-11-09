@@ -20,6 +20,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var embeddedImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

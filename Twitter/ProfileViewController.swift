@@ -12,6 +12,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var screenName: UILabel!
+    @IBOutlet weak var numberOfTweets: UILabel!
+    @IBOutlet weak var following: UILabel!
+    @IBOutlet weak var numberOfFollowers: UILabel!
     
     var tweetArray = [NSDictionary]()
     var user: NSDictionary!
@@ -55,6 +58,15 @@ class ProfileViewController: UIViewController {
             self.profileName.text = self.user["name"] as? String
             let optionalScreenName = self.user["screen_name"] as? String
             self.screenName.text = "@\(optionalScreenName!)"
+            
+            let followers = self.user["followers_count"] as? Int
+            let followingNum = self.user["friends_count"] as? Int
+            let tweetNumber = self.user["statuses_count"] as? Int
+            
+            self.numberOfTweets.text = "\(tweetNumber!) Tweets"
+            self.following.text = "\(followingNum!) Following"
+            self.numberOfFollowers.text = "\(followers!) Followers"
+        
             
         }, failure: { (Error) in
             print("could not retrieve tweets")

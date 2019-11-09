@@ -92,9 +92,16 @@ class HomeTableTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
         
         let user = tweetArray[indexPath.row]["user"] as! NSDictionary
-        
+//        let entities = user["entities"] as! NSDictionary
+//        let entitiesUrl = entities["url"] as! NSDictionary
+//        let entitiesArray = entitiesUrl["urls"] as! [NSDictionary]
+//
+//        print(entitiesArray[0]["url"])
         cell.userNameLabel.text = user["name"] as? String
         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
+        
+//        let entitiesUrlFinal = URL(string: (entitiesArray[0]["url"] as? String)!)
+//        let entityData = try? Data(contentsOf: entitiesUrlFinal!)
         
         var urlForImage = user["profile_image_url_https"] as? String
         urlForImage = urlForImage?.replacingOccurrences(of: "_normal.png", with: ".png")
@@ -110,6 +117,13 @@ class HomeTableTableViewController: UITableViewController {
             cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.width / 2
             cell.profileImageView.clipsToBounds = true
         }
+//        
+//        if let entitiesData = entityData{
+//            cell.embeddedImage.image = UIImage(data: entitiesData)
+//            cell.embeddedImage.contentMode = .scaleAspectFill
+//            cell.embeddedImage.layer.masksToBounds = false
+//            cell.embeddedImage.clipsToBounds = true
+//        }
         cell.timeLabel.text = getRelativeTime(timeString: tweetArray[indexPath.row]["created_at"] as! String)
         cell.setLikedTweet(tweetArray[indexPath.row]["favorited"] as! Bool)
         cell.setRetweeted(tweetArray[indexPath.row]["retweeted"] as! Bool)
