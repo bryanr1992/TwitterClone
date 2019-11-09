@@ -20,7 +20,7 @@ class HomeTableTableViewController: UITableViewController {
         
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 220
         tableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -128,6 +128,7 @@ class HomeTableTableViewController: UITableViewController {
         cell.setLikedTweet(tweetArray[indexPath.row]["favorited"] as! Bool)
         cell.setRetweeted(tweetArray[indexPath.row]["retweeted"] as! Bool)
         cell.tweetId = tweetArray[indexPath.row]["id"] as? Int
+        
         
         return cell
     }
